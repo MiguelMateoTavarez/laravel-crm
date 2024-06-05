@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(\App\Models\User::class, column: 'created_by')->constrained('users');
             $table->timestamps();
         });
     }

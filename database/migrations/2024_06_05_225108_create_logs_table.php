@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('logs', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(\App\Models\User::class)->constrained('users');
+            $table->string('model');
+            $table->string('field');
+            $table->string('old_value');
+            $table->string('new_value');
             $table->timestamps();
         });
     }

@@ -11,17 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('schedules', function (Blueprint $table) {
+        Schema::create('invoices', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\Contact::class)->constrained('contacts');
             $table->foreignIdFor(\App\Models\User::class, column: 'created_by')->constrained('users');
-            $table->enum('type', \App\Enums\ScheduleTypeEnum::getValuesForMigration());
-            $table->longText('description')->nullable();
-            $table->date('date');
-            $table->date('expiration_date')->nullable();
-            $table->timestamp('time');
-            $table->string('address')->nullable();
-            $table->tinyInteger('reminder')->comment('Time in minutes');
+            $table->string('code');
+            $table->text('comment')->nullable();
+            $table->boolean('is_quotation')->default(true);
+            $table->float('total');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('schedules');
+        Schema::dropIfExists('invoices');
     }
 };

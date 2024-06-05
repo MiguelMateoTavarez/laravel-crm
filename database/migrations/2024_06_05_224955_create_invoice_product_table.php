@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('invoice_product', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(\App\Models\User::class, column: 'created_by')->constrained('users');
+            $table->foreignIdFor(\App\Models\Product::class)->constrained('products');
+            $table->foreignIdFor(\App\Models\Invoice::class)->constrained('invoices');
+            $table->float('subtotal');
+            $table->float('discount')->nullable();
             $table->timestamps();
         });
     }
