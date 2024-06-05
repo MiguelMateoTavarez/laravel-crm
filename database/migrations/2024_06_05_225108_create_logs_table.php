@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('logs', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->foreignIdFor(\App\Models\User::class)->constrained('users');
             $table->string('model');
             $table->string('field');

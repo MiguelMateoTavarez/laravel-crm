@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->foreignIdFor(\App\Models\User::class, column: 'created_by')->constrained('users');
+            $table->string('name');
+            $table->float('price');
             $table->timestamps();
         });
     }
