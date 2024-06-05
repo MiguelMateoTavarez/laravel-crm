@@ -9,7 +9,7 @@ enum ScheduleTypeEnum: int
 
     public function getLabelById(int $id): string
     {
-        return match($id){
+        return match ($id) {
             self::TASK->value => self::TASK->name,
             self::MEETING->value => self::MEETING->name,
             default => 'Invalid status'

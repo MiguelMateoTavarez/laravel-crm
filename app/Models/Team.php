@@ -2,10 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Shared\BaseModel;
 
-class Team extends Model
+class Team extends BaseModel
 {
-    use HasFactory;
+    //
 }

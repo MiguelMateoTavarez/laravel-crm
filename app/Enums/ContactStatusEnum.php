@@ -10,7 +10,7 @@ enum ContactStatusEnum: int
 
     public function getLabelById(int $id): string
     {
-        return match($id){
+        return match ($id) {
             self::LEAD->value => self::LEAD->name,
             self::CUSTOMER->value => self::CUSTOMER->name,
             self::LOST->value => self::LOST->name,
@@ -23,7 +23,7 @@ enum ContactStatusEnum: int
         return [
             self::LEAD->value,
             self::CUSTOMER->value,
-            self::LOST->value
+            self::LOST->value,
         ];
     }
 }

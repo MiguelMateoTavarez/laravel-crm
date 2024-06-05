@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ContactResource;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class ContactsController extends Controller
@@ -11,7 +13,7 @@ class ContactsController extends Controller
      */
     public function index()
     {
-        //
+        return ContactResource::collection(Contact::all()->paginate());
     }
 
     /**
@@ -19,7 +21,9 @@ class ContactsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return ContactResource::collection(
+            Contact::create($request->validated())
+        );
     }
 
     /**
@@ -27,7 +31,9 @@ class ContactsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return ContactResource::collection(
+            Contact::find($id)->first()
+        );
     }
 
     /**
@@ -35,7 +41,9 @@ class ContactsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $contact = Contact::find($id)->first();
+
+        $contact->update($request->validated());
     }
 
     /**
@@ -43,6 +51,14 @@ class ContactsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Contact::find($id)->delete();
+    }
+
+    /**
+     * Restore the specified resource from trash.
+     */
+    public function restore(string $id)
+    {
+        Contact::withTrashed()->where('id', $id)->restore();
     }
 }
