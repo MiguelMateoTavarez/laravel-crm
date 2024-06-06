@@ -46,7 +46,7 @@ class ContactsController extends Controller
      */
     public function update(Request $request, string $id): void
     {
-        Contact::where('id',$id)
+        Contact::where('id', $id)
             ->update($request->all());
     }
 
