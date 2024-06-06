@@ -10,7 +10,7 @@ class Contact extends BaseModel
 {
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'created_by', 'id');
     }
 
     public function notes(): HasMany

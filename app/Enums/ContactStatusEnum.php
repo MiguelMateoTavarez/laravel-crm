@@ -8,7 +8,7 @@ enum ContactStatusEnum: int
     case CUSTOMER = 2;
     case LOST = 3;
 
-    public function getLabelById(int $id): string
+    public static function getLabelById(int $id): string
     {
         return match ($id) {
             self::LEAD->value => self::LEAD->name,
