@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\{
     ContactsController,
-    NotesController
+    NotesController,
+    DocumentsController,
 };
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,3 +17,6 @@ Route::put('contacts/{contact}/restore', [ContactsController::class, 'restore'])
 
 Route::apiResource('notes', NotesController::class);
 Route::put('notes/{note}/restore', [NotesController::class, 'restore'])->name('notes.restore');
+
+Route::apiResource('documents', DocumentsController::class);
+Route::put('documents/{document}/restore', [DocumentsController::class, 'restore'])->name('documents.restore');

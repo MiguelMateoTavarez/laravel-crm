@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\Invoice::class)->constrained('invoices');
             $table->float('subtotal');
             $table->float('discount')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

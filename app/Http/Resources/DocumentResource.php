@@ -14,6 +14,11 @@ class DocumentResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'contact' => $this->whenLoaded('contact', fn()=>$this->contact->full_name),
+            'created_by' => $this->whenLoaded('user', fn()=>$this->user->name),
+            'url' => $this->url,
+        ];
     }
 }

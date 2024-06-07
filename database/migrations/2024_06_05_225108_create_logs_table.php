@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('field');
             $table->string('old_value');
             $table->string('new_value');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

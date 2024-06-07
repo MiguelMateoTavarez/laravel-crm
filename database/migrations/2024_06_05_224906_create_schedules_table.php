@@ -22,6 +22,7 @@ return new class extends Migration
             $table->timestamp('time');
             $table->string('address')->nullable();
             $table->tinyInteger('reminder')->comment('Time in minutes');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

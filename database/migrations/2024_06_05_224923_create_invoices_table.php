@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('comment')->nullable();
             $table->boolean('is_quotation')->default(true);
             $table->float('total');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\User::class, column: 'created_by')->constrained('users');
             $table->string('name');
             $table->float('price');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
