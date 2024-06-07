@@ -16,8 +16,8 @@ class NoteResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'contact' => $this->whenLoaded('contact', fn()=>$this->contact->full_name),
-            'created_by' => $this->whenLoaded('user', fn()=>$this->user->name),
+            'contact' => $this->whenLoaded('contact', fn () => $this->contact->full_name),
+            'created_by' => $this->whenLoaded('user', fn () => $this->user->name),
             'description' => $this->description,
         ];
     }

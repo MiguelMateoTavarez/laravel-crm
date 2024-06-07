@@ -7,7 +7,7 @@ enum ScheduleTypeEnum: int
     case TASK = 1;
     case MEETING = 2;
 
-    public function getLabelById(int $id): string
+    public static function getLabelById(int $id): string
     {
         return match ($id) {
             self::TASK->value => self::TASK->name,

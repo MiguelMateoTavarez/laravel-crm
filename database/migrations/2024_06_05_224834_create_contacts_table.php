@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Enums\ContactStatusEnum;
 
 return new class extends Migration
 {
@@ -13,9 +14,11 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignIdFor(\App\Models\User::class, column: 'created_by')->constrained('users');
+            $table->foreignIdFor(\App\Models\User::class, column: 'created_by')
+                ->constrained('users');
             $table->string('full_name')->nullable();
-            $table->enum('status', \App\Enums\ContactStatusEnum::getValuesForMigration());
+            $table->enum('status', ContactStatusEnum::getValuesForMigration())
+                ->default(ContactStatusEnum::LEAD->value);
             $table->string('identification')->nullable();
             $table->json('phones')->nullable();
             $table->json('emails')->nullable();
