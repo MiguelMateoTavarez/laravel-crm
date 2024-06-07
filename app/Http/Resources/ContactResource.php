@@ -26,9 +26,6 @@ class ContactResource extends JsonResource
             'emails' => $this->emails,
             'website' => $this->website,
             'address' => $this->address,
-            'deleted_at' => Carbon::parse($this->deleted_at)->format('d-m-Y H:i:s'),
-            'created_at' => Carbon::parse($this->created_at)->format('d-m-Y H:i:s'),
-            'updated_at' => Carbon::parse($this->updated_at)->format('d-m-Y H:i:s'),
         ];
     }
 }
